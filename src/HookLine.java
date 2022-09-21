@@ -92,7 +92,19 @@ public class HookLine {
                                 p.y = -150;
                                 p.start = false;
                                 BackGround.totalS += p.score; // add points
+                                BackGround.isBoost = false;  // initialize boost
                                 state = 0;
+                            }
+                            if(BackGround.isBoost){
+                                if(p.poroT == 1)
+                                    m = 1;
+                                if(p.poroT == 2) {
+                                    p.x = -150;
+                                    p.y = -150;
+                                    p.start = false;
+                                    state = 2;
+                                    BackGround.isBoost = false;
+                                }
                             }
                         }
                     }

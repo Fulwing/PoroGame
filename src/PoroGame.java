@@ -7,6 +7,8 @@ import java.util.List;
 
 public class PoroGame extends JFrame {
 
+    public static int gameState;   // 0 == ready  1 == playing  2 == shop  3 == lose  4 == win
+
     List<Poro> poroList = new ArrayList<>();     //save poros
 
     BackGround backGround = new BackGround();
@@ -76,12 +78,34 @@ public class PoroGame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if(e.getButton() == 1)
-                    hookLine.state = 1;
+                switch (gameState){
+                    case 0:
+                        if(e.getButton() == 3) {
+                            gameState = 1;
+                            backGround.startTime = System.currentTimeMillis();
+                        }
+                        break;
+                    case 1:  // playing phase
+                        if(e.getButton() == 1 && hookLine.state == 0)   // waving, left click
+                            hookLine.state = 1;
+                        if(e.getButton() == 3 && hookLine.state == 3 && BackGround.boostN > 0 && BackGround.isBoost == false){  // pulling, right click
+                            BackGround.isBoost = true;
+                            BackGround.boostN--;
+                        }
+                        if(e.getButton() == 3 && BackGround.boostN ==0) {
+                            BackGround.drawW(getGraphics(),30,Color.BLACK,"no boost left", 510, 200);
+                        }
+                        break;
+                    case 2: break;
+                    case 3: break;
+                    case 4: break;
+                    default:
+                }
             }
         });
 
         while (true){
+            nextLevel();
             repaint();    //make the line move
             try {
                 Thread.sleep(10);
@@ -91,18 +115,38 @@ public class PoroGame extends JFrame {
         }
     }
 
+    public void nextLevel(){
+        if(gameState == 1 && backGround.gamePass()) {
+            if (BackGround.totalS >= backGround.goalS) {       // next level !!!!
+                if(BackGround.level == 5)
+                    gameState = 4;
+                else
+                    BackGround.level++;
+
+                    dispose();
+                    PoroGame poroGame1 = new PoroGame();
+                    poroGame1.launch();
+
+            }else
+                gameState = 3;           // didn't finish on time
+        }
+    }
+
     @Override
     public void paint(Graphics g) {
         osImage = this.createImage(768, 1000); //double buffer
         Graphics gImage = osImage.getGraphics();
 
-        backGround.painSelf(gImage);                 // draw all the element
+        backGround.painSelf(gImage);                 // draw background
 
-        for(Poro x : poroList){
-            x.paintSelf(gImage);               // draw good poro
+        if(gameState == 1){
+            for(Poro x : poroList){
+                x.paintSelf(gImage);               // draw good poro
+            }
+
+            hookLine.painSelf(gImage);
         }
 
-        hookLine.painSelf(gImage);
         g.drawImage(osImage,0,0,null);
     }
 

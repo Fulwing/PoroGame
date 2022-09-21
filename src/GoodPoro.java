@@ -10,6 +10,7 @@ public class GoodPoro extends Poro{
         this.start = false;
         this.m = 30;
         this.score = 4;
+        this.poroT = 1;
         this.img = Toolkit.getDefaultToolkit().getImage("PoroImg/Poro_Render.png");
     }
 }

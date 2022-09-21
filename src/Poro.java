@@ -11,6 +11,8 @@ public class Poro {
 
     int score;
 
+    int poroT; // 1 == good poro   2 == bad poro
+
     Image img;
 
     boolean start = false;  // could the block move  true == yes  false == no

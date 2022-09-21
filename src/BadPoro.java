@@ -9,6 +9,7 @@ public class BadPoro extends Poro{
         this.start = false;
         this.m = 60;
         this.score = 1;
+        this.poroT = 2;
         this.img = Toolkit.getDefaultToolkit().getImage("PoroImg/badporo.png");
     }
 }
