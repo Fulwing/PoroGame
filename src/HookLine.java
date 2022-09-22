@@ -116,10 +116,14 @@ public class HookLine {
                 }
                 break;
 
-
             default:
         }
 
+    }
+
+    void reStart(){
+        n = 0;             //initialize line
+        length = 100;
 
     }
 }

@@ -96,9 +96,22 @@ public class PoroGame extends JFrame {
                             BackGround.drawW(getGraphics(),30,Color.BLACK,"no boost left", 510, 200);
                         }
                         break;
-                    case 2: break;
-                    case 3: break;
-                    case 4: break;
+                    case 2:
+                        if(e.getButton() == 1)
+                            backGround.buy = true;
+                        if(e.getButton() == 3) {
+                            gameState = 3;
+                            backGround.startTime = System.currentTimeMillis();
+                        }
+                        break;
+                    case 3:
+                    case 4:
+                        if(e.getButton() ==1){
+                            gameState = 1;
+                            backGround.reStart();
+                            hookLine.reStart();
+                        }
+                        break;
                     default:
                 }
             }
@@ -120,16 +133,17 @@ public class PoroGame extends JFrame {
             if (BackGround.totalS >= backGround.goalS) {       // next level !!!!
                 if(BackGround.level == 5)
                     gameState = 4;
-                else
+                else {
+                    gameState = 2;
                     BackGround.level++;
-
-                    dispose();
-                    PoroGame poroGame1 = new PoroGame();
-                    poroGame1.launch();
-
+                }
             }else
                 gameState = 3;           // didn't finish on time
+            dispose();
+            PoroGame poroGame1 = new PoroGame();
+            poroGame1.launch();
         }
+
     }
 
     @Override

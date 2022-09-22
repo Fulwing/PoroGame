@@ -13,6 +13,10 @@ public class BackGround {
     public long startTime;
 
     public long endTime;
+
+    public int boostPrice = (int) (Math.random()*10);   // boost price
+
+    public boolean buy = false;    // true == buy  false == I don't wanna buy this
     Image backGround = Toolkit.getDefaultToolkit().getImage("PoroImg/background.png");        //get image in
     Image sky = Toolkit.getDefaultToolkit().getImage("PoroImg/sky.png");
     Image player = Toolkit.getDefaultToolkit().getImage("PoroImg/arcadeporo_20.png");
@@ -42,13 +46,24 @@ public class BackGround {
                 long timeL = 20 - (endTime-startTime)/1000;                                  //Timer
                 drawW(g, 25, Color.RED,"Time left: " + (timeL > 0 ? timeL:0), 550, 90);
                 break;
-            case 2: break;
+            case 2:
+                g.drawImage(boost, 300, 400, null);
+                drawW(g,40,Color.WHITE,"Boost Price: " + boostPrice, 200, 550);
+                drawW(g,40,Color.WHITE,"Wanna buy? ", 200, 600);
+                if(buy){
+                    totalS -= boostPrice;
+                    boostN++;
+                    buy = false;
+                    PoroGame.gameState = 1;
+                    startTime = System.currentTimeMillis();
+                }
+                break;
             case 3:
                 drawW(g,60,Color.WHITE,"Oh no you lose TvT", 130, 400);
                 drawW(g,40,Color.WHITE,"You just need " + (goalS - totalS) + " more score", 130, 600);
                 break;
             case 4:
-                drawW(g,60,Color.WHITE,"You won!!!", 130, 400);
+                drawW(g,60,Color.WHITE,"You won!!!", 250, 550);
                 break;
         }
 
@@ -59,6 +74,14 @@ public class BackGround {
         if(timeL > 20)
             return true;
         return false;
+    }
+
+    void reStart(){
+        totalS = 0;
+        level = 1;
+        goalS = level*10;   //initialize
+        boostN = 3;
+        isBoost = false;
     }
 
     public static void drawW(Graphics g,int size, Color color, String s, int x, int y){
