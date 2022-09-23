@@ -18,8 +18,8 @@ public class GoodPoro extends Poro{
 class GoodPoroMini extends GoodPoro{
     GoodPoroMini(){
         this.x = (int)(Math.random()*700);
-        this.w = 52;
-        this.h = 52;
+        this.w = 70;
+        this.h = 70;
         this.m = 15;
         this.score = 8;
         this.img = Toolkit.getDefaultToolkit().getImage("PoroImg/queenporo.png");
@@ -29,8 +29,8 @@ class GoodPoroMini extends GoodPoro{
 class DiamPoro extends GoodPoro{
     DiamPoro(){
         this.x = (int)(Math.random()*700);
-        this.w = 32;
-        this.h = 23;
+        this.w = 38;
+        this.h = 35;
         this.m = 3;
         this.score = 12;
         this.img = Toolkit.getDefaultToolkit().getImage("PoroImg/DiamPoro.jpg");

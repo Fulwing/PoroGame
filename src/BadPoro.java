@@ -5,7 +5,7 @@ public class BadPoro extends Poro{
         this.x = (int)(Math.random()*700);
         this.y = (int)(Math.random()*550 + 300);
         this.w = 72;
-        this.h = 72;
+        this.h = 90;
         this.start = false;
         this.m = 60;
         this.score = 1;

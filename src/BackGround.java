@@ -23,12 +23,15 @@ public class BackGround {
 
     Image boost = Toolkit.getDefaultToolkit().getImage("PoroImg/boost.png");
 
+    Image title = Toolkit.getDefaultToolkit().getImage("PoroImg/Title.PNG");
+
     void painSelf(Graphics g){
         g.drawImage(backGround , 0, 0, null);
         g.drawImage(sky ,0,0 , null);                              //draw picture
         switch (PoroGame.gameState){
             case 0:
-                drawW(g,60,Color.WHITE,"Right click to start the game!", 30, 400);
+                g.drawImage(title, 10, 300, null);
+                drawW(g,30,Color.WHITE,"Right click to start the game!", 300, 700);
                 break;
             case 1:
                 g.drawImage(player, 280,50, null);
