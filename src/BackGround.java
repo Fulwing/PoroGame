@@ -34,12 +34,12 @@ public class BackGround {
                 drawW(g,30,Color.WHITE,"Right click to start the game!", 300, 700);
                 break;
             case 1:
-                g.drawImage(player, 280,50, null);
+                g.drawImage(player, 300,50, null);
 
                 drawW(g,30,Color.BLACK,"Total Score : " + totalS, 30, 190);
 
-                g.drawImage(boost, 425, 74, null);
-                drawW(g,30,Color.BLACK,"x " + boostN, 510, 150);              // draw number of boost
+                g.drawImage(boost, 455, 74, null);
+                drawW(g,30,Color.BLACK,"x " + boostN, 540, 150);              // draw number of boost
 
                 drawW(g, 22, Color.BLACK,"Level: " + level, 30, 100);         // level right now
 

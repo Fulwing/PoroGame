@@ -100,7 +100,7 @@ public class PoroGame extends JFrame {
                         if(e.getButton() == 1)
                             backGround.buy = true;
                         if(e.getButton() == 3) {
-                            gameState = 3;
+                            gameState = 1;
                             backGround.startTime = System.currentTimeMillis();
                         }
                         break;
