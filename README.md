@@ -1,5 +1,4 @@
 # PoroGame
-Porogame
 Start game:
 Right click to start the game
 
