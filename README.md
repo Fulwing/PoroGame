@@ -21,7 +21,7 @@ Bad Poro  1 score|
 
 
 Boost:
-Use when grabing good poro will speed up the pulling
+Use when grabing good poro will speed up the pulling|
 Use when grabing bad poro will throw it out and get back normal speed
 
 
